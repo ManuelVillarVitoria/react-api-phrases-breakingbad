@@ -41,7 +41,11 @@ const Frase = ({frase}) => {
      
     //Es una manera de que si detecta que el objeto está vacío antes de presionar al botón
     //no muestre el contenedor de la frase vacío en el DOM.
-    if(Object.keys(frase).length === 0) return null;
+   
+    //if(Object.keys(frase).length === 0) return null;
+
+    //Pero no nos interesa hacer eso, sino que al abrir la aplicación automaticamente cargue 
+    //una frase, y lo haremos usando el Hook useEffect.
 
     return ( 
         <ContenedorFrase>
