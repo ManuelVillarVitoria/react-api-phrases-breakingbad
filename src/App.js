@@ -1,6 +1,7 @@
-import React,{Fragment} from 'react';
+import React,{Fragment, useState} from 'react';
 //Instalamos emotion (npm i @emotion/core @emotion/styled) y lo importamos:
 import styled from '@emotion/styled';
+import Frase from './components/Frase';
 
 const Contenedor = styled.div `
   display: flex;
@@ -22,6 +23,9 @@ const Boton = styled.button `
 
 function App() {
 
+  //Hook useState para frases
+  const [frase, guardarFrase] = useState({});
+
   //Con Fecth API
   /*
   const consultarAPI = () => {
@@ -37,12 +41,15 @@ function App() {
   const consultarAPI = async() => {
     const api = await fetch('https://breaking-bad-quotes.herokuapp.com/v1/quotes');
     const frase = await api.json();
-    console.log(frase[0]);
+    guardarFrase(frase[0]);
   }
 
   return (
     <Fragment>
       <Contenedor>
+        <Frase 
+          frase={frase}
+        />
         <Boton
           //Si se quiere que la función llame automaticamente sin esperar a clickar el 
           // Botón entonces se debería llamar así: consultarAPI()
